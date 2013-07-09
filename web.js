@@ -6,7 +6,7 @@ function hello()
 {
     var fs = require('fs');
     var dato = "Hola";
-    fs.readFile("index.html", function (err, data) {
+    fs.readFile("/andinamus/index.html", function (err, data) {
     if (err) throw err;
     var buf = new Buffer(data);
     dato = buf.toString('utf-8');
