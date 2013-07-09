@@ -1,21 +1,13 @@
 var express = require('express');
 
 var app = express.createServer(express.logger());
-
-function hello()
-{
-    var fs = require('fs');
-    var dato = "Hola";
-    fs.readFile("/home/ubuntu/andinamus/index.html", function (err, data) {
-    if (err) throw err;
-    var buf = new Buffer(data);
-    dato = buf.toString('utf-8');
-});
-return dato;
-}
+var fs = require('fs');
+var out = fs.fileReadSync('index.html');
+var buf = new Buffer(out);
+var indexS = buf.toString('utf-8');
 
 app.get('/', function(request, response) {
-    response.send(hello());
+    response.send(indexS);
 });
 
 var port = process.env.PORT || 5000;
